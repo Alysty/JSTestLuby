@@ -1,26 +1,20 @@
 const Sequilize = require('sequelize');
 const db = require('../config/database');
 
-const User = db.define('User', {
+const Stars = db.define('Stars', {
     id:{
         type: Sequilize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    username:{
+    voter_id:{
+        type: Sequilize.INTEGER   
+    },
+    repo_id:{
         type: Sequilize.STRING   
     },
-    location:{
-        type: Sequilize.STRING   
-    },
-    email:{
-        type: Sequilize.STRING   
-    },
-    avatar:{
-        type: Sequilize.BLOB
-    },
-    bio:{
-        type: Sequilize.STRING   
+    amount_of_stars:{
+        type: Sequilize.FLOAT(2,1)
     },
     createdAt:{
         type: Sequilize.DATE
@@ -30,4 +24,4 @@ const User = db.define('User', {
     }
 })
 
-module.exports = User;
+module.exports = Stars;

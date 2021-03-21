@@ -29,6 +29,8 @@ app.get('/api/users/:id', (req,res)=>{
 const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
+const repositoriesRouter = require('./routes/repositories');
+app.use('/repositories', repositoriesRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{ console.log(`The server is now running on ${port}`)})

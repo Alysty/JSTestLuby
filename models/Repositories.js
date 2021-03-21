@@ -1,25 +1,25 @@
 const Sequilize = require('sequelize');
 const db = require('../config/database');
 
-const User = db.define('User', {
+const Repositories = db.define('Repositories', {
     id:{
         type: Sequilize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    username:{
+    owner_id:{
+        type: Sequilize.INTEGER   
+    },
+    name:{
         type: Sequilize.STRING   
     },
-    location:{
+    description:{
         type: Sequilize.STRING   
     },
-    email:{
-        type: Sequilize.STRING   
+    is_public:{
+        type: Sequilize.BOOLEAN
     },
-    avatar:{
-        type: Sequilize.BLOB
-    },
-    bio:{
+    slug:{
         type: Sequilize.STRING   
     },
     createdAt:{
@@ -30,4 +30,4 @@ const User = db.define('User', {
     }
 })
 
-module.exports = User;
+module.exports = Repositories;

@@ -1,25 +1,16 @@
 const Sequilize = require('sequelize');
 const db = require('../config/database');
 
-const User = db.define('User', {
+const Users_Followers = db.define('Users_Followers', {
     id:{
         type: Sequilize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    username:{
-        type: Sequilize.STRING   
+    user_id:{
+        type: Sequilize.INTEGER   
     },
-    location:{
-        type: Sequilize.STRING   
-    },
-    email:{
-        type: Sequilize.STRING   
-    },
-    avatar:{
-        type: Sequilize.BLOB
-    },
-    bio:{
+    follower_id:{
         type: Sequilize.STRING   
     },
     createdAt:{
@@ -30,4 +21,4 @@ const User = db.define('User', {
     }
 })
 
-module.exports = User;
+module.exports = Users_Followers;
