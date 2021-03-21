@@ -73,3 +73,18 @@ CREATE TABLE "Stars"
 WITH (
     OIDS = FALSE
 );
+
+--login auth logs
+
+CREATE TABLE "Tokens"
+(
+    "id" serial,
+	user_id int not null,
+    "createdAt" date,
+    "updatedAt" date,
+    PRIMARY KEY ("id"),
+	FOREIGN KEY (user_id) REFERENCES "Users" (id)
+)
+WITH (
+    OIDS = FALSE
+);
