@@ -1,0 +1,17 @@
+{
+  "name": "node_test",
+  "version": "1.0.0",
+  "description": "Github like app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Pedro Pastore",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.1"
+  }
+}
