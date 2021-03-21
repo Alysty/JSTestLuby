@@ -2,6 +2,8 @@ const router = require('express').Router();
 const db = require('../config/database');
 const User = require('../models/User');
 
+
+// Route to get all the users
 router.get('/', (req, res)=>{
     User.findAll()
         .then(
@@ -12,6 +14,7 @@ router.get('/', (req, res)=>{
         .catch( err => {console.log(err); res.sendStatus(400)})
 })
 
+//Route to get a specific user
 router.get("/find/:id", (req, res)=>{
     User.findAll({
         where:{
@@ -26,6 +29,8 @@ router.get("/find/:id", (req, res)=>{
         .catch( err => {console.log(err); res.sendStatus(400)})
         
 })
+
+//Route to add an user
 router.route('/add').post((req, res)=>{
     
     const {data} = req.body;
@@ -42,6 +47,7 @@ router.route('/add').post((req, res)=>{
 });
 
 
+//Route to delete an user
 router.delete('/delete/:id', (req,res)=>{
     User.destroy({
             where:{
@@ -53,4 +59,21 @@ router.delete('/delete/:id', (req,res)=>{
         .catch( err => {console.log(err); res.sendStatus(400)})
 })
 
+
+//Route to update an user
+router.put('/edit', (req, res)=>{
+        let {id, username, email, bio, avatar, location} = req.query
+        
+        User.update({
+            username: username,
+            email: email,
+            bio: bio,
+            avatar: avatar, 
+            location: location
+        },{
+            where: {id: id}
+        })
+            .then(()=> res.send("entry was updated"))
+            .catch( err => {console.log(err); res.sendStatus(400)})
+})
 module.exports = router ;
