@@ -32,5 +32,11 @@ app.use('/users', usersRouter);
 const repositoriesRouter = require('./routes/repositories');
 app.use('/repositories', repositoriesRouter);
 
+const usersFollowersRouter = require('./routes/users_followers');
+app.use('/users_followers', usersFollowersRouter);
+
+const starsRouter = require('./routes/stars');
+app.use('/stars', starsRouter);
+
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{ console.log(`The server is now running on ${port}`)})

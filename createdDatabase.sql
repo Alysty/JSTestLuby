@@ -27,6 +27,7 @@ CREATE TABLE "Users_Followers"
     "id" serial,
     user_id int not null,
 	follower_id int not null,
+	UNIQUE (user_id, follower_id),
     "createdAt" date,
     "updatedAt" date,
     PRIMARY KEY ("id"),
