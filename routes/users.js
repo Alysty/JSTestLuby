@@ -3,15 +3,29 @@ const db = require('../config/database');
 const User = require('../models/User');
 
 router.get('/', (req, res)=>{
-    return User.findAll()
-    .then(user => {
-        data = {"data":{user}, count: user.length}
-        res.send(data);
-    })
-    .catch(err=>console.log(err));
+    User.findAll()
+        .then(
+            user => {
+                data = {"data":{user}, count: user.length}
+                res.send(data);
+        })
+        .catch( err => {console.log(err); res.sendStatus(400)})
 })
 
-
+router.get("/find/:id", (req, res)=>{
+    User.findAll({
+        where:{
+            id: req.params.id
+        }
+    })
+        .then(
+            user => {
+                data = {"data":{user}, count: user.length}
+                res.send(data);
+        })
+        .catch( err => {console.log(err); res.sendStatus(400)})
+        
+})
 router.route('/add').post((req, res)=>{
     
     const {data} = req.body;
@@ -26,5 +40,17 @@ router.route('/add').post((req, res)=>{
         .then(user => res.redirect('/users'))
         .catch( err => {console.log(err); res.sendStatus(400)})
 });
+
+
+router.delete('/delete/:id', (req,res)=>{
+    User.destroy({
+            where:{
+                id: req.params.id
+            }
+        }
+    )
+        .then(()=> res.send("entry was deleted"))
+        .catch( err => {console.log(err); res.sendStatus(400)})
+})
 
 module.exports = router ;
