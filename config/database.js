@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = new Sequelize('JSTest', 'postgres', 'ppHWCC12', {
+module.exports = new Sequelize('JSTest', 'postgres', 'password', {
     host: 'localhost',
     dialect: 'postgres',
     pool: {
